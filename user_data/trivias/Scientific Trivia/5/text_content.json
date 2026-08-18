@@ -1,0 +1,30 @@
+{
+    "answers": [
+        [
+            "The action of the magnetic field on iron filings",
+            "The action of the electric field on iron filings",
+            "The mutual influence of the electric and magnetic fields"
+        ],
+        [
+            "Calculation of the area of the circle by exhaustion of polygons",
+            "Demonstration of the value of the integral of a circle",
+            "Archimedean Method"
+        ],
+        [
+            "Principle of Archimedes",
+            "Principle of Anaxagoras",
+            "Principle of conservation of energy"
+        ]
+    ],
+    "questions": [
+        {
+            "What does this experiment demonstrate?": "assets/experiment.mp4"
+        },
+        {
+            "What is the name of the mathematical procedure represented?": "assets/pi.mp4"
+        },
+        {
+            "What physical principle is represented?": "assets/principle_of_archimedes.mp4"
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "current_config_path": [
+        "config"
+    ],
+    "accepted_filepath_formats": [
+        "config",
+        "accepted_formats.json"
+    ],
+    "audio_config_path": [
+        "config",
+        "audio.json"
+    ],
+    "backgrounds_path": [
+        "assets",
+        "backgrounds"
+    ],
+    "default_config_copy": [
+        "config",
+        "default_config_copy"
+    ],
+    "general_config_path": [
+        "config",
+        "general.json"
+    ],
+    "music_folder": [
+        "assets",
+        "music"
+    ],
+    "path_to_assets_paths": [
+        "config",
+        "assets_paths.json"
+    ],
+    "pinned_trivias_list": [
+        "config",
+        "pinned_trivias_list.json"
+    ],
+    "root_dir_trivias_path": [
+        "user_data",
+        "trivias"
+    ],
+    "thanks_beta_plaintext": [
+        "config",
+        "thanks_beta_plaintext.json"
+    ],
+    "translations_dir": [
+        "translations",
+        "locale"
+    ]
+}

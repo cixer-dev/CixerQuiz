@@ -1,0 +1,57 @@
+{
+  "add_file_icon_path": [
+    "assets",
+    "icons",
+    "add_file.svg"
+  ],
+  "add_icon_path": [
+    "assets",
+    "icons",
+    "add.svg"
+  ],
+  "current_qss_style_path": [
+    "assets",
+    "qss_styles",
+    "dark.qss"
+  ],
+  "delete_icon_path": [
+    "assets",
+    "icons",
+    "delete.svg"
+  ],
+  "game_logo": [
+    "assets",
+    "branding",
+    "dark_theme.svg"
+  ],
+  "github_logo": [
+    "assets",
+    "branding",
+    "github_logo.svg"
+  ],
+  "pinned_icon_path": [
+    "assets",
+    "icons",
+    "pinned.svg"
+  ],
+  "push_button_sound_effect": [
+    "assets",
+    "sound_effects",
+    "push_btn_sound_effect.wav"
+  ],
+  "reduced_game_logo": [
+    "assets",
+    "branding",
+    "reduced_dark_theme.svg"
+  ],
+  "start_icon_path": [
+    "assets",
+    "icons",
+    "start.svg"
+  ],
+  "unpin_icon_path": [
+    "assets",
+    "icons",
+    "unpin.svg"
+  ]
+}

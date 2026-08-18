@@ -1,0 +1,368 @@
+/* ========================================
+   COLOR PALETTE
+   ======================================== */
+/* BACKGROUND COLORS */
+/* Main background: HSL=(0, 0, 0) RGB= #000000 */
+/* Target button 1: HSL=(0, 0, 8) RGB= #141414 */
+/* Target button 2: HSL=(0, 0, 16) RGB= #292929 */
+
+/* FONT COLORS */
+/* Main font: HSL=(0, 0, 100) RGB= #ffffff */
+/* Muted font: HSL=(0, 0, 60) RGB= #999999 */
+
+/* ACCENT COLORS - PURPLE */
+/* Darkest: HSL=(270, 100, 40) RGB= #6600CC */
+/* Default: HSL=(270, 100, 50) RGB= #8000FF */
+/* Medium: HSL=(270, 100, 60) RGB= #9933FF */
+/* Lightest: HSL=(270, 70, 70) RGB= #B37DE8 */
+
+/* ACCENT COLORS - GREEN */
+/* Darkest: HSL=(120, 100, 40) RGB= #009900 */
+/* Default: HSL=(120, 100, 50) RGB= #00b300 */
+/* Lightest: HSL=(120, 100, 60) RGB= #00cc00 */
+
+/* ACCENT COLORS - RED */
+/* Darkest: HSL=(360, 100, 40) RGB= #990000 */
+/* Default: HSL=(360, 100, 50) RGB= #b30000 */
+/* Lightest: HSL=(360, 100, 60) RGB= #cc0000 */
+
+/* ALTERNATIVE ACCENT COLORS */
+/* Muted white: HSL=(0, 0, 80) RGB= #cccccc */
+/* Gray: HSL=(0, 0, 20) RGB= #333333 */
+
+/* ========================================
+   FONT SIZE LEVELS
+   ======================================== */
+/* Level 1: 28px */
+/* Level 2: 28px */
+/* Level 3: 24px */
+/* Level 4: 20px */
+
+
+/* ========================================
+   GENERIC WIDGETS
+   ======================================== */
+
+QWidget {
+    background-color: transparent;
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0px;
+}
+
+QLineEdit,
+QPlainTextEdit,
+QSpinBox,
+QComboBox,
+QLineEdit:disabled,
+QPlainTextEdit:disabled {
+    background-color: #141414;
+    border: 1px solid #333333;
+    color: #cccccc;
+    padding-left: 4px;
+}
+
+QLineEdit:focus,
+QLineEdit:hover,
+QPlainTextEdit:focus,
+QPlainTextEdit:hover,
+QSpinBox:focus,
+QSpinBox:hover,
+QSpinBox::up-button:hover,
+QSpinBox::up-button:focus,
+QSpinBox::down-button:hover,
+QSpinBox::down-button:focus,
+QComboBox:focus,
+QComboBox:hover,
+QComboBox::drop-down,
+QComboBox QAbstractItemView {
+    border: 2px solid #8000FF;
+    background-color: #292929;
+}
+
+QPushButton {
+    background-color: #141414;
+    border: 1px solid #292929;
+    color: white;
+    padding-left: 8px;
+    text-align: center;
+}
+
+QPushButton:hover,
+QPushButton:focus {
+    border: 1px solid #8000FF;
+    background-color: #141414;
+}
+
+QPushButton:pressed,
+QPushButton:checked {
+    background-color: #8000FF;
+    border: 1px solid #9933FF;
+}
+
+QSlider::groove:horizontal {
+    border: 1px solid #333333;
+    height: 8px;
+    background-color: #141414;
+}
+
+QSlider::handle:horizontal {
+    background-color: #8000FF;
+    border: 1px solid #9933FF;
+    width: 16px;
+    margin: -4px 0;
+    border-radius: 8px;
+}
+
+QSlider::handle:horizontal:hover,
+QSlider::handle:horizontal:focus {
+    background-color: #9933FF;
+    border: 1px solid #B37DE8;
+}
+
+QSlider::sub-page:horizontal {
+    background-color: #8000FF;
+}
+
+QSlider::sub-page:horizontal:hover,
+QSlider::sub-page:horizontal:focus {
+    background-color: #9933FF;
+}
+
+QScrollBar:horizontal {
+    height: 0px;
+    border: none;
+    background: transparent;
+}
+
+QPOnlyPlaintext,
+QPOnlyPlaintext:focus,
+QPOnlyPlaintext:hover,
+QPOnlyPlaintext:disabled,
+QPOnlyPlaintext:read-only,
+LossReasonExplanationPlaintext,
+LossReasonExplanationPlaintext:focus,
+LossReasonExplanationPlaintext:hover,
+LossReasonExplanationPlaintext:disabled,
+LossReasonExplanationPlaintext:read-only,
+HugeHeader,
+HugeHeader:focus,
+HugeHeader:hover,
+HugeHeader:disabled,
+HugeHeader:read-only {
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    color: white;
+}
+
+
+/* ========================================
+   CUSTOM WIDGETS
+   ======================================== */
+
+/* NavBar */
+NavBar QWidget {
+    background: transparent;
+}
+
+NavBar QPushButton {
+    border: 1px solid #141414;
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1, 
+                                stop:0 #000000, stop:1 #0A0A0A);
+    font-size: 28px;
+}
+
+NavBar QPushButton:pressed,
+NavBar QPushButton:focus,
+NavBar QPushButton:checked {
+    background: #6600CC;
+    border: 1px solid #9933FF;
+}
+
+/* TriviaArea */
+TriviaNameLabel {
+    background-color: transparent;
+}
+
+TriviaDescriptionPlainText,
+TriviaDescriptionPlainText:focus,
+TriviaDescriptionPlainText:hover {
+    color: #999999;
+    background-color: transparent;
+    border: none;
+}
+
+TriviaArea TriviaNameLabel {
+    font-size: 24px;
+}
+
+/* APTemplate */
+APTemplate QPushButton {
+    font-size: 24px;
+}
+
+/* ProgressTimer */
+ProgressTimer::groove:vertical {
+    border: 1px solid #333333;
+    background-color: #141414;
+    width: 8px;
+    margin: 0 2px;
+}
+
+ProgressTimer::chunk:vertical {
+    background-color: #8000FF;
+    border: 1px solid #9933FF;
+    border-radius: 4px;
+    margin: 0px;
+}
+
+ProgressTimer::chunk:vertical:hover {
+    background-color: #9933FF;
+    border: 1px solid #B37DE8;
+}
+
+/* Game Result Headers */
+LossHeader,
+VictoryLabel {
+    font-size: 32px;
+}
+
+LossReasonExplanationPlaintext,
+LossTimeoutReasonExplanation,
+VictoryMsg {
+    font-size: 24px;
+}
+
+/* SignalizedOkButton */
+SignalizedOkButton:pressed,
+SignalizedOkButton:focus,
+SignalizedOkButton:checked {
+    background-color: #990000;
+    border: 1px solid #b30000;
+}
+
+SignalizedOkButton:hover {
+    border: 1px solid #b30000;
+}
+
+/* DeleteButton */
+DeleteButton:hover,
+DeleteButton:focus {
+    border: 1px solid #b30000;
+    background-color: #141414;
+}
+
+DeleteButton:pressed,
+DeleteButton:checked {
+    background-color: #990000;
+    border: 1px solid #b30000;
+}
+
+/* PinOrUnpinButton */
+PinOrUnpinButton,
+PinOrUnpinButton:checked {
+    background-color: #141414;
+    border: 1px solid #292929;
+    color: white;
+    padding-left: 8px;
+    text-align: center;
+}
+
+/* LevelLabel */
+LevelLabel {
+    border: 3px solid #8000FF;
+    background-color: transparent;
+    font-size: 30px;
+    padding: 0px;
+}
+
+/* GoBack button */
+GoBack,
+GoBack:hover,
+GoBack:focus,
+GoBack:pressed,
+GoBack:checked {
+    font-size: 28px;
+    background-color: #6600CC;
+    border: 1px solid #9933FF;
+}
+
+/* RepeatTrivia button */
+RepeatTrivia {
+    font-size: 28px;
+}
+
+/* ResetDefaultConfig button */
+ResetDefaultConfig {
+    font-size: 24px;
+}
+
+/* MainStack */
+MainStack {
+    background-image: url(assets/backgrounds/abstract_timekeeper.svg);
+    background-repeat: repeat;
+    background-position: center;
+}
+
+/* PageStack */
+PageStack {
+    background-image: url(assets/backgrounds/large_triangles.svg);
+    border: 1px solid #292929;
+}
+
+/* Text Display Elements */
+BigHeader,
+BigHeader:focus,
+BigHeader:hover,
+BigHeader:disabled,
+BigHeader:read-only {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: white;
+}
+
+BigHeaderColored {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    color: #B37DE8;
+}
+
+MediumHeader,
+MediumHeader:focus,
+MediumHeader:hover,
+MediumHeader:disabled,
+MediumHeader:read-only {
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    color: white;
+}
+
+SmallHeader,
+SmallHeader:focus,
+SmallHeader:hover,
+SmallHeader:disabled,
+SmallHeader:read-only {
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: white;
+}
+
+/* ========================================
+   OBJECTS AND SPECIAL NAMES
+   ======================================== */
+
+#action_btn {
+    font-size: 24px;
+    background-color: #6600CC;
+    border: 1px solid #9933FF;
+}
+
+#TransparentPlaintext {
+    background: transparent;
+    border: none;
+}

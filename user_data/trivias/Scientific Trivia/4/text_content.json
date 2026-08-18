@@ -1,0 +1,30 @@
+{
+    "answers": [
+        [
+            "Rene Descartes",
+            "Georg Wilhelm Friedrich Hegel",
+            "Oscar Fingal O'Fflahertie Wills Wilde"
+        ],
+        [
+            "The Prince of Mathematics",
+            "The prodigy of mathematics",
+            "The King of Mathematics"
+        ],
+        [
+            "A quadratic function",
+            "A linear function",
+            "A cubic function"
+        ]
+    ],
+    "questions": [
+        {
+            "Who does this portrait represent?": "assets/Descartes.jpg"
+        },
+        {
+            "What is the nickname of this personality?": "assets/Gauss.jpg"
+        },
+        {
+            "The graph represents...": "assets/cuadratic.webp"
+        }
+    ]
+}

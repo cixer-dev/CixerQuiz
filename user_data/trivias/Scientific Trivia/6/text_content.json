@@ -1,0 +1,48 @@
+{
+    "answers": [
+        [
+            {
+                "Rene Descartes": "assets/Descartes.jpg"
+            },
+            {
+                "Trence Tao": "assets/Trence Tao.jpg"
+            },
+            {
+                "Srinivasa Ramanujan": "assets/Ramanujan.jpg"
+            }
+        ],
+        [
+            {
+                "Isaac Newton": "assets/newton.jpg"
+            },
+            {
+                "Galileo Galilei": "assets/galileo.jpg"
+            },
+            {
+                "Gottfried Wilhelm Leibniz": "assets/Lebniz.jpeg"
+            }
+        ],
+        [
+            {
+                "Stephen Wiliam Hawking": "assets/hawking.jpg"
+            },
+            {
+                "Richard Dawkings": "assets/Dawkings.jpg"
+            },
+            {
+                "Trence Tao": "assets/Trence Tao.jpg"
+            }
+        ]
+    ],
+    "questions": [
+        {
+            "Who is the author of this treatise?": "assets/methode.jpg"
+        },
+        {
+            "Who is the author of this treatise?": "assets/principia.png"
+        },
+        {
+            "Who is the author of this book?": "assets/brief.jpg"
+        }
+    ]
+}

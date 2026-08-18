@@ -1,0 +1,7 @@
+{
+    "is_valid_trivia": true,
+    "num_levels": 8,
+    "trivia_description": "A scientific trivia with 8 levels. It covers content in chemistry, physics, and mathematics.",
+    "trivia_duration": 60000,
+    "trivia_name": "Scientific Trivia"
+}

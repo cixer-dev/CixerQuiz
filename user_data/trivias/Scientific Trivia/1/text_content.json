@@ -1,0 +1,25 @@
+{
+    "answers": [
+        [
+            "Unique and unambiguous designation that represents its properties",
+            "Arbitrary designation based on standards",
+            "Mathematical equation that represents physical properties"
+        ],
+        [
+            "Thermodynamic process in which reacting substances are converted into products",
+            "Electrochemical process where one substance is converted into another",
+            "Physical process where two elements combine without forming a new substance",
+            "Chemical process where energy is consumed"
+        ],
+        [
+            "Type of matter formed by atoms of the same category",
+            "Substance that cannot be decomposed by a chemical reaction",
+            "Substance that cannot be decomposed by a physical reaction"
+        ]
+    ],
+    "questions": [
+        "In Chemistry, the nomenclature of a substance is a...",
+        "In Chemistry, reaction is understood as a...",
+        "In Chemistry, chemical element is understood as a..."
+    ]
+}
