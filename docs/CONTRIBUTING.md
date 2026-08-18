@@ -23,6 +23,7 @@ To keep the project consistent when contributing, make sure your Python code fol
 # Pull Request Guidelines
 
 1. Ensure that all modifications—including but not limited to assets and code—use terms compatible with this project’s MIT license, and that they are properly credited in [`docs/CREDITS.md`](docs/CREDITS.md).
-2. Ensure that the dependencies of your contribution are explicitly listed in `pyconfig` at the root of the project and are compatible with Poetry.
-3. Ensure that each repository change is accompanied by an appropriate version number increment in the README, and that the project follows the SemVer versioning scheme.
-4. Merge the pull request only after it receives approval from the lead developer.
+2. Ensure that the dependencies of your contribution are explicitly listed in [`pyproject.toml`](pyproject.toml) and [´requirements.txt´](requirements.txt) at the root of the project and are compatible with Poetry. For updating the requirements you can to use [´poetry-plugin-export´](https://github.com/python-poetry/poetry-plugin-export). 
+3. Ensure that each repository change is accompanied by an appropriate version number increment in the [`pyproject.toml`](pyproject.toml), and that the project follows the SemVer versioning scheme.
+4. Ensure the [´README`](README.md) is updated and that the installation steps work correctly.
+5. Merge the pull request only after it receives approval from the lead developer.
