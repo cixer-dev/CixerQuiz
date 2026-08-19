@@ -38,10 +38,6 @@
         "user_data",
         "trivias"
     ],
-    "thanks_beta_plaintext": [
-        "config",
-        "thanks_beta_plaintext.json"
-    ],
     "translations_dir": [
         "translations",
         "locale"
