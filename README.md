@@ -1,16 +1,13 @@
 # CixerQuiz
-
-# Introduction
-CixerQuiz is an educational trivia-based application designed to provide users with maximum freedom to create, play, and share quizzes. Each trivia game can contain an unlimited number of levels across up to 9 different question types, featuring text and multimedia resources such as images and videos to ensure an interactive experience. Additionally, CixerQuiz allows you to share your created trivias within the app and customize a significant portion of the application's internal configuration and behavior.
+CixerQuiz is an educational application designed to provide users with maximum freedom to create, play, and share trivias. Each trivia can contain an unlimited number of levels of up to 9 different question and answers types. These level types feature a diversity of resources such as images and videos to enhance the interactive experience. CixerQuiz allows sharing your created trivia within the app and customizing the application's internal configuration and behavior.
 
 ## Why This Project Is Useful
 
-CixerQuiz is an app with virtually infinite flexibility, making it suitable for numerous use cases. If you are a cinephile, you could create trivias about classic movies or television series where the objective is to identify the work based on a video clip. If you are an educator or student, you could create a customized trivia to prepare for an examination and share this resource with your students or peers. You could make a personalized trivia to improve your ability to recall country flags, characteristics of historical figures, mathematical expressions, or chemical nomenclature rules.
+CixerQuiz is an app with virtually infinite flexibility, making it suitable for many use cases. For example, if you are a cinephile, you could create trivia about classic movies or television series where the objective is to identify the film based on a video clip. If you are an educator or student, you could create customized trivia to prepare for a test and share this resource with your students or peers. Alternatively, you could make personalized trivia to improve your ability to recall country flags, characteristics of historical figures, mathematical expressions, or chemical nomenclature rules.
 
-If you are an experienced user, professional programmer, or geek, you can use this project as a reference implementation for software solutions employing a similar technical stack, referring to [`docs/tech_stack.md`](docs/tech_stack.md) for more information
+If you are an experienced user, professional programmer, or technology enthusiast, you can use this project as a reference implementation for software solutions employing a similar technical stack. See [`docs/tech_stack.md`](docs/tech_stack.md) for more information.
 
 ## How to Use This Project
-
 ### Building From Source
 
 If you want to build the project yourself, follow these steps:
@@ -41,7 +38,7 @@ pip install -r requirements.txt --no-deps
 
 ## Project Documentation
 
-The project documentation is available in the [`docs/`](docs/) directory. It is recommend starting with [`docs/STRUCTURE.md`](docs/STRUCTURE.md) to understand the project structure, followed by [`docs/trivia_structure.md`](docs/trivia_structure.md) to comprehend the internal structure of a trivia game.
+The project documentation is available in the [`docs/`](docs/) directory. It is recommended to start with [`docs/STRUCTURE.md`](docs/STRUCTURE.md), which explains the directory structure, and then [`docs/trivia_structure.md`](docs/trivia_structure.md), which explains the internal structure and functionalities of a trivia.
 
 ## How to Contribute
 
