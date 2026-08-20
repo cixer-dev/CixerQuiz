@@ -1,5 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" viewBox="0 0 64 64">
-<path fill-rule="nonzero" fill="rgb(70.19608%, 0%, 0%)" fill-opacity="1" d="M 8 11 C 7.449219 11 7 11.449219 7 12 C 7 12.550781 7.449219 13 8 13 L 16 13 C 16.550781 13 17 12.550781 17 12 C 17 11.449219 16.550781 11 16 11 Z M 8 11 "/>
-<path fill-rule="evenodd" fill="rgb(70.19608%, 0%, 0%)" fill-opacity="1" d="M 23 12 C 23 18.074219 18.074219 23 12 23 C 5.925781 23 1 18.074219 1 12 C 1 5.925781 5.925781 1 12 1 C 18.074219 1 23 5.925781 23 12 M 21 12 C 21 16.96875 16.96875 21 12 21 C 7.03125 21 3 16.96875 3 12 C 3 7.03125 7.03125 3 12 3 C 16.96875 3 21 7.03125 21 12 "/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" style="color: rgb(179, 0, 0); opacity: 1; transform: rotate(0deg);" width="64" height="64" viewBox="0 0 24 24"><g fill="currentColor"><path d="M8 11a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2z"></path><path fill-rule="evenodd" d="M23 12c0 6.075-4.925 11-11 11S1 18.075 1 12S5.925 1 12 1s11 4.925 11 11m-2 0a9 9 0 1 1-18 0a9 9 0 0 1 18 0" clip-rule="evenodd"></path></g></svg>
