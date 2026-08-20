@@ -18,5 +18,4 @@ jobs:
 
           echo "GitHub workspace:"
           echo "$GITHUB_WORKSPACE"
-
- 
+          ls
