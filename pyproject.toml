@@ -1,6 +1,6 @@
 [project]
 name = "cixerquiz"
-version = "1.1.2"
+version = "1.0.2"
 description = ""
 authors = [
     {name = "Cixer"}
@@ -12,6 +12,8 @@ dependencies = [
     "pyside6 (>=6.11.1,<7.0.0)"
 ]
 
+[tool.poetry]
+package-mode = false
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

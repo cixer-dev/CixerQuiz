@@ -1,0 +1,125 @@
+name: Project Maintenance
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update_requirements:
+    name: Update Poetry dependencies and requirements.txt
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - name: Prepare previous and current pyproject.toml files
+        id: prepare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_pyproject_path="$GITHUB_WORKSPACE/pyproject.toml"
+          previous_pyproject_path="$RUNNER_TEMP/previous-pyproject.toml"
+
+          if [[ ! -f "$current_pyproject_path" ]]; then
+            echo "The current commit does not contain pyproject.toml."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git rev-parse HEAD^ >/dev/null 2>&1; then
+            echo "There is no previous commit to compare."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git cat-file -e "HEAD^:pyproject.toml" 2>/dev/null; then
+            echo "The previous commit did not contain pyproject.toml."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git show HEAD^:pyproject.toml > "$previous_pyproject_path"
+
+          echo "can_compare=true" >> "$GITHUB_OUTPUT"
+          echo "previous_pyproject_path=$previous_pyproject_path" \
+            >> "$GITHUB_OUTPUT"
+          echo "current_pyproject_path=$current_pyproject_path" \
+            >> "$GITHUB_OUTPUT"
+
+          echo "The pyproject.toml files can be compared."
+          echo "Previous pyproject.toml: $previous_pyproject_path"
+          echo "Current pyproject.toml: $current_pyproject_path"
+
+      - name: Compare project versions
+        id: compare_versions
+        shell: bash
+        run: |
+          set +e
+
+          python -m github_scripts.project_version_comparator.main \
+            "${{ steps.prepare.outputs.previous_pyproject_path }}" \
+            "${{ steps.prepare.outputs.current_pyproject_path }}"
+
+          exit_code=$?
+
+          echo "comparison_exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+
+          # Prevent exit code 2 from failing this step.
+          exit 0
+
+      - name: Update Poetry dependencies and requirements.txt
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code == '2'
+          }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash github_scripts/update_requirements/update_requirements.sh
+
+      - name: Commit requirements.txt
+        if: steps.compare_versions.outputs.comparison_exit_code == '2'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          requirements_file="$GITHUB_WORKSPACE/requirements.txt"
+
+          echo "Current directory: $(pwd)"
+          echo "Workspace: $GITHUB_WORKSPACE"
+          echo "Expected file: $requirements_file"
+
+          find "$GITHUB_WORKSPACE" -name "requirements.txt" -print
+          git status --short
+
+          if [[ ! -f "$requirements_file" ]]; then
+            echo "requirements.txt was not found in the repository workspace."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -- "$requirements_file"
+
+          if git diff --cached --quiet; then
+            echo "requirements.txt has no changes."
+            exit 0
+          fi
+
+          git commit -m "Update requirements.txt"
+          git push
