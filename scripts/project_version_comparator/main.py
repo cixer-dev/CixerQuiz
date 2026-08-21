@@ -39,4 +39,4 @@ def get_version_tuple(
 ) -> tuple[int, int, int] | None:
     """Return the project's major, minor, and patch versions."""
     pyproject_parser: Any = PyProjectParser(project_path)
-    return pyproject_parser.get_version_tuple()
+    return pyproject_parser.get_project_version_tuple()

@@ -39,7 +39,6 @@ jobs:
 
           git show HEAD^:pyproject.toml > "$previous_pyproject_path"
 
-          ls
           python -m scripts.main \
             "$previous_pyproject_path" \
             "$current_pyproject_path"

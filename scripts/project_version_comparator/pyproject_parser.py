@@ -19,11 +19,8 @@ class PyProjectParser:
         project_version = self.project_content["version"]
         return project_version
 
-    @staticmethod
-    def get_version_tuple(
-        version_string: str
-            ) -> Optional[tuple[int, int, int]]:
-        match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", version_string)
+    def get_project_version_tuple(self) -> Optional[tuple[int, int, int]]:
+        match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", self.version)
         print(f"Match: {match}")
         if match:
             versions_unformatted = tuple(match.group().split("."))
@@ -33,6 +30,6 @@ class PyProjectParser:
                 return major, minor, patch
         else:
             raise RuntimeError(
-                f"The project version '{version_string}' is not formatted "
+                f"The project version '{self.version}' is not formatted "
                 "properly using semantic var style"
                 )
