@@ -21,7 +21,6 @@ class PyProjectParser:
 
     def get_project_version_tuple(self) -> Optional[tuple[int, int, int]]:
         match = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)", self.version)
-        print(f"Match: {match}")
         if match:
             versions_unformatted = tuple(match.group().split("."))
             if len(versions_unformatted) == 3:

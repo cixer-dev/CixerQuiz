@@ -18,15 +18,15 @@ def have_same_major_and_minor(
                 and previous_minor == current_minor
             ):
                 print(
-                    f"Previous version: {previous_version}' and "
-                    f"current version {current_version} "
+                    f"Previous version: '{previous_version}' and "
+                    f"current version '{current_version}' "
                     f"has same major and minor version"
                     )
                 return True
             else:
                 print(
-                    f"Previous version: {previous_version}' and "
-                    f"current version {current_version} "
+                    f"Previous version: '{previous_version}' and "
+                    f"current version '{current_version}' "
                     f"does not have the same major and minor version"
                     )
                 return False
