@@ -30,7 +30,7 @@ def main() -> None:
         arguments.previous_pyproject_path,
         arguments.current_pyproject_path,
     )
-    if versions_are_compatible:
+    if not versions_are_compatible:
         update_requirements()
 
 
