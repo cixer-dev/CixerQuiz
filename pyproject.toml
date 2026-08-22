@@ -22,4 +22,3 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.group.dev.dependencies]
 pyinstaller = "^6.21.0"
 flake8 = "^7.3.0"
-poetry-plugin-export = "^1.10.0"

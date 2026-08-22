@@ -17,7 +17,10 @@ sudo apt-get install -y python3-pip
 python3 -m pip install --upgrade pip
 
 echo "Installing Poetry..."
-sudo apt-get install -y python3-poetry
+python3 -m pip install --upgrade poetry
 poetry --version
 
 echo "Poetry is installed."
+
+poetry lock
+poetry install

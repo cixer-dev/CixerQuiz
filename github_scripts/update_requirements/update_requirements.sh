@@ -13,6 +13,10 @@ trap '
 
 bash github_scripts/update_requirements/setup_poetry_dependencies.sh
 
+echo "Installing poetry-plugin-export..."
+
+pip install poetry-plugin-export
+
 echo "Exporting requirements.txt..."
 
 poetry export \
