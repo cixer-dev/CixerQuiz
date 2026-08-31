@@ -1,11 +1,11 @@
 [project]
 name = "cixerquiz"
-version = "1.0.0"
+version = "1.0.1"
 description = ""
 authors = [
     {name = "Cixer"}
 ]
-license = {text = "MIT"}
+license = {text = "GPLv3"}
 readme = "README.md"
 requires-python = ">=3.13,<3.15"
 dependencies = [

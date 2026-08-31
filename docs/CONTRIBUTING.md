@@ -23,7 +23,7 @@ To keep the project consistent when contributing, make sure your Python code fol
 # Pull Request Guidelines
 1. Ensure that each repository change is accompanied by an appropriate version number increment in the [`pyproject.toml`](pyproject.toml) that follows the `SemVer` versioning scheme. This rule is fundamental because the `GitHub Actions` project logic works using this system. Do not change the version if the code only affects the CI or does not affect the main program front-end or back-end.
 
-2. Ensure that all modifications (including but not limited to assets and code) use terms compatible with this project's `MIT` license, and that they are properly credited in [`docs/CREDITS.md`](docs/CREDITS.md).
+2. Ensure that all modifications (including but not limited to assets and code) use terms compatible with this project's `GPLv3` license, and that they are properly credited in [`docs/CREDITS.md`](docs/CREDITS.md).
 
 3. Ensure that the dependencies of your contribution are explicitly listed in [`pyproject.toml`](pyproject.toml) at the root of the project and are compatible with `Poetry`. It is not necessary to manually update the [`requirements.txt`](/requirements.txt) file if you update `pyproject.toml` because a `GitHub Action` generates this file in each minor or major version update.
 
