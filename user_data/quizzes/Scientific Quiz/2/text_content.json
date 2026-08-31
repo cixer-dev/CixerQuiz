@@ -1,0 +1,42 @@
+{
+    "answers": [
+        [
+            {
+                "Antoine Lavoisier": "assets/lavoisier.png"
+            },
+            {
+                "John Dalton": "assets/dalton.png"
+            },
+            {
+                "Amedeo Avogadro": "assets/avogadro.png"
+            }
+        ],
+        [
+            {
+                "Michael Faraday": "assets/faraday.png"
+            },
+            {
+                "Louis Pasteur": "assets/pasteur.png"
+            },
+            {
+                "Humphry Davy": "assets/davy.png"
+            }
+        ],
+        [
+            {
+                "Sir Isaac Newton": "assets/newton.jpg"
+            },
+            {
+                "Blaise Pascal": "assets/pascal.jpeg"
+            },
+            {
+                "Alfred Nobel": "assets/nobel.png"
+            }
+        ]
+    ],
+    "questions": [
+        "Which of the following scientists is known as the \"father of chemistry\"?",
+        "Which of the following scientists discovered the phenomenon of electromagnetic induction?",
+        "Which of the following physicists discovered the Laws of Motion?"
+    ]
+}

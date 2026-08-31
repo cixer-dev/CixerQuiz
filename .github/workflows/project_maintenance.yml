@@ -1,0 +1,353 @@
+name: Project Maintenance
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update_windows_release:
+    name: Build Windows amd64 release
+    runs-on: windows-latest
+    outputs:
+      can_compare: ${{ steps.prepare.outputs.can_compare }}
+      comparison_exit_code: ${{ steps.compare_versions.outputs.comparison_exit_code }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Prepare previous and current pyproject.toml files
+        id: prepare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_pyproject_path="$GITHUB_WORKSPACE/pyproject.toml"
+          previous_pyproject_path="$RUNNER_TEMP/previous-pyproject.toml"
+
+          if [[ ! -f "$current_pyproject_path" ]]; then
+            echo "The current commit does not contain pyproject.toml."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git rev-parse HEAD^ >/dev/null 2>&1; then
+            echo "There is no previous commit to compare."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git cat-file -e "HEAD^:pyproject.toml" 2>/dev/null; then
+            echo "The previous commit did not contain pyproject.toml."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git show HEAD^:pyproject.toml > "$previous_pyproject_path"
+
+          {
+            echo "can_compare=true"
+            echo "previous_pyproject_path=$previous_pyproject_path"
+            echo "current_pyproject_path=$current_pyproject_path"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Compare project versions
+        id: compare_versions
+        if: steps.prepare.outputs.can_compare == 'true'
+        shell: bash
+        run: |
+          set +e
+
+          python -m github_scripts.project_version_comparator.main \
+            "${{ steps.prepare.outputs.previous_pyproject_path }}" \
+            "${{ steps.prepare.outputs.current_pyproject_path }}"
+
+          exit_code=$?
+
+          echo "comparison_exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+
+          # The comparison result is handled explicitly in later steps.
+          exit 0
+
+      - name: Install Poetry and dependencies
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code != '5'
+          }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash github_scripts/poetry_initializer/windows_poetry_initializer.sh
+
+      - name: Create Windows amd64 project release
+        id: create_windows_release
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code != '5'
+          }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python -m github_scripts.release_builder.main "$GITHUB_WORKSPACE"
+
+          release_file="$GITHUB_WORKSPACE/dist/CixerQuiz_windows-amd64.zip"
+
+          if [[ ! -f "$release_file" ]]; then
+            echo "Expected Windows release was not created: $release_file"
+            exit 1
+          fi
+
+      - name: Upload Windows release artifact
+        if: steps.create_windows_release.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-release
+          path: dist/CixerQuiz_windows-amd64.zip
+          if-no-files-found: error
+
+
+  update_linux_release:
+    name: Build Linux amd64 release and update requirements
+    runs-on: ubuntu-latest
+    outputs:
+      can_compare: ${{ steps.prepare.outputs.can_compare }}
+      comparison_exit_code: ${{ steps.compare_versions.outputs.comparison_exit_code }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 2
+
+      - name: Prepare previous and current pyproject.toml files
+        id: prepare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_pyproject_path="$GITHUB_WORKSPACE/pyproject.toml"
+          previous_pyproject_path="$RUNNER_TEMP/previous-pyproject.toml"
+
+          if [[ ! -f "$current_pyproject_path" ]]; then
+            echo "The current commit does not contain pyproject.toml."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git rev-parse HEAD^ >/dev/null 2>&1; then
+            echo "There is no previous commit to compare."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if ! git cat-file -e "HEAD^:pyproject.toml" 2>/dev/null; then
+            echo "The previous commit did not contain pyproject.toml."
+            echo "can_compare=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git show HEAD^:pyproject.toml > "$previous_pyproject_path"
+
+          {
+            echo "can_compare=true"
+            echo "previous_pyproject_path=$previous_pyproject_path"
+            echo "current_pyproject_path=$current_pyproject_path"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+
+      - name: Compare project versions
+        id: compare_versions
+        if: steps.prepare.outputs.can_compare == 'true'
+        shell: bash
+        run: |
+          set +e
+
+          python -m github_scripts.project_version_comparator.main \
+            "${{ steps.prepare.outputs.previous_pyproject_path }}" \
+            "${{ steps.prepare.outputs.current_pyproject_path }}"
+
+          exit_code=$?
+
+          echo "comparison_exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+
+          exit 0
+
+      - name: Install Poetry and dependencies
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code != '5'
+          }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+          bash github_scripts/poetry_initializer/linux_poetry_initializer.sh
+
+      - name: Create Linux amd64 project release
+        id: create_linux_release
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code != '5'
+          }}
+        shell: bash
+        run: |
+          set -Eeuo pipefail
+
+          python -m github_scripts.release_builder.main "$GITHUB_WORKSPACE"
+
+          release_file="$GITHUB_WORKSPACE/dist/CixerQuiz_linux-amd64.zip"
+
+          if [[ ! -f "$release_file" ]]; then
+            echo "Expected Linux release was not created: $release_file"
+            exit 1
+          fi
+
+      - name: Upload Linux release artifact
+        if: steps.create_linux_release.outcome == 'success'
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-release
+          path: dist/CixerQuiz_linux-amd64.zip
+          if-no-files-found: error
+
+      - name: Update requirements.txt
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code != '4' &&
+            steps.compare_versions.outputs.comparison_exit_code != '5'
+          }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          bash github_scripts/update_requirements.sh
+
+      - name: Commit requirements.txt
+        if: >-
+          ${{
+            steps.prepare.outputs.can_compare == 'true' &&
+            steps.compare_versions.outputs.comparison_exit_code != '4' &&
+            steps.compare_versions.outputs.comparison_exit_code != '5'
+          }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          requirements_file="$GITHUB_WORKSPACE/requirements.txt"
+
+          if [[ ! -f "$requirements_file" ]]; then
+            echo "requirements.txt was not found."
+            exit 1
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -- "$requirements_file"
+
+          if git diff --cached --quiet; then
+            echo "requirements.txt has no changes."
+            exit 0
+          fi
+
+          git commit -m "Update requirements.txt"
+          git push
+
+
+  publish_release:
+    name: Publish GitHub release
+    runs-on: ubuntu-latest
+    needs:
+      - update_windows_release
+      - update_linux_release
+    if: >-
+      ${{
+        github.ref == 'refs/heads/main' &&
+        needs.update_windows_release.outputs.can_compare == 'true' &&
+        needs.update_windows_release.outputs.comparison_exit_code != '5' &&
+        needs.update_linux_release.outputs.can_compare == 'true' &&
+        needs.update_linux_release.outputs.comparison_exit_code != '5'
+      }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v5
+
+      - name: Download Windows release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-release
+          path: dist
+
+      - name: Download Linux release artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: linux-release
+          path: dist
+
+      - name: Publish project releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ls
+
+          windows_release_file="$GITHUB_WORKSPACE/dist/CixerQuiz_windows-amd64.zip"
+          linux_release_file="$GITHUB_WORKSPACE/dist/CixerQuiz_linux-amd64.zip"
+
+          for release_file in \
+            "$windows_release_file" \
+            "$linux_release_file"
+          do
+            if [[ ! -f "$release_file" ]]; then
+              echo "Release file not found: $release_file"
+              exit 1
+            fi
+          done
+
+          version="$(
+            sed -nE 's/^version[[:space:]]*=[[:space:]]*"([^"]+)".*/\1/p' \
+              pyproject.toml | head -n 1
+          )"
+
+          if [[ -z "$version" ]]; then
+            echo "Could not determine the project version."
+            exit 1
+          fi
+
+          tag="v${version}"
+
+          if gh release view "$tag" >/dev/null 2>&1; then
+            echo "Release $tag already exists. Replacing its assets."
+
+            gh release upload "$tag" \
+              "$windows_release_file" \
+              "$linux_release_file" \
+              --clobber
+          else
+            echo "Creating GitHub release $tag."
+
+            gh release create "$tag" \
+              "$windows_release_file" \
+              "$linux_release_file" \
+              --title "CixerQuiz v${version}" \
+              --generate-notes
+          fi

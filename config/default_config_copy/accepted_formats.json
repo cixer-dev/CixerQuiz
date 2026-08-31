@@ -1,0 +1,32 @@
+{
+  "AUDIO": [
+    "aac",
+    "m4a",
+    "mp3",
+    "ogg",
+    "wav"
+  ],
+  "IMAGE": [
+    "bmp",
+    "gif",
+    "jpeg",
+    "jpg",
+    "png",
+    "svg",
+    "tiff",
+    "webp",
+    "ico"
+  ],
+  "QSS STYLE": [
+    "qss"
+  ],
+  "VIDEO": [
+    "avi",
+    "flv",
+    "mkv",
+    "mov",
+    "mp4",
+    "webm",
+    "wmv"
+  ]
+}

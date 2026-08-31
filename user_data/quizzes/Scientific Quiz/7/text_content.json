@@ -1,0 +1,30 @@
+{
+    "answers": [
+        [
+            "The derivative of a function at a point",
+            "The integral of a function",
+            "The limit of a function at a point"
+        ],
+        [
+            "The integral of a function",
+            "The derivative of a function",
+            "The limit of a function at a point"
+        ],
+        [
+            "The limit of a function at a point",
+            "The derivative of a function at a point",
+            "The integral of a function"
+        ]
+    ],
+    "questions": [
+        {
+            "This animation represents...": "assets/deriv.mp4"
+        },
+        {
+            "This animation represents...": "assets/integral.mp4"
+        },
+        {
+            "This animation represents...": "assets/limit.mp4"
+        }
+    ]
+}

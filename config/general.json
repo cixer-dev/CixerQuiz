@@ -1,0 +1,12 @@
+{
+    "app_domain": "CixerQuiz",
+    "github_repo_url": "https://github.com/cixer-dev",
+    "current_language": "English",
+    "current_language_code": "en",
+    "font_family": "Sans Serif",
+    "font_style": "Normal",
+    "languages_to_code": {
+        "English": "en",
+        "Espa\u00f1ol": "es"
+    }
+}

@@ -1,0 +1,24 @@
+{
+    "answers": [
+        [
+            "v = (X+X0)/t",
+            "v = X*t",
+            "v = a*t"
+        ],
+        [
+            "It equals the sum of the square of the legs",
+            "It equals the sum of the legs",
+            "It equals the sum of the legs squared"
+        ],
+        [
+            "Inversely proportional",
+            "Directly proportional",
+            "Irrelevant"
+        ]
+    ],
+    "questions": [
+        "How is the average velocity of an object determined in Newtonian Mechanics if its initial position (X0) and final position (X) are known in a specific time interval (t)?",
+        "According to the Pythagorean Theorem, the square of the hypotenuse...",
+        "In Newtonian Mechanics, the mass of an object with respect to its acceleration is..."
+    ]
+}

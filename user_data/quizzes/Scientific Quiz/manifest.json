@@ -1,0 +1,7 @@
+{
+    "is_valid_quiz": true,
+    "num_levels": 8,
+    "quiz_description": "A scientific quiz with 8 levels. It covers content in chemistry, physics, and mathematics.",
+    "quiz_duration": 60000,
+    "quiz_name": "Scientific Quiz"
+}

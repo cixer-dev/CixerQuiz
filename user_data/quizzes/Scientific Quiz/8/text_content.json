@@ -1,0 +1,32 @@
+{
+    "answers": [
+        [
+            "Einstein's Theory of Relativity",
+            "Theory of Universal Gravitation",
+            "M-Theory",
+            "Theory of Electromagnetism"
+        ],
+        [
+            "x=-5",
+            "x=-5 and x=5",
+            "x=0 and x=10",
+            "x=-10 and x=10"
+        ],
+        [
+            "I only know that I know nothing",
+            "I think, therefore I am",
+            "Plato is my friend, but truth is my greater friend"
+        ]
+    ],
+    "questions": [
+        {
+            "What physical theory is the concept of the 'Light Cone' related to?": "assets/light_cone.jpg"
+        },
+        {
+            "What value or values satisfy this equation?": "assets/ecuation.jpg"
+        },
+        {
+            "What phrase is this Greek sage known for?": "assets/Socrates_Louvre.jpg"
+        }
+    ]
+}
