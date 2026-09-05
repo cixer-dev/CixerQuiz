@@ -26,7 +26,6 @@ DIST_PATH="$2"
 LAUNCHER_PATH="$3"
 
 printf 'Installing project dependencies with Poetry...\n'
-bash github_scripts/poetry_initializer/linux_poetry_initializer.sh
 
 printf 'Building the application with PyInstaller...\n'
 poetry run pyinstaller \
@@ -38,25 +37,25 @@ poetry run pyinstaller \
     --distpath "$DIST_PATH" \
     main.py
 
-cat > "$LAUNCHER_PATH" <<'EOF'
+cat > "$LAUNCHER_PATH" <<EOF
 #!/usr/bin/env bash
 
 set -Eeuo pipefail
 
-APP_NAME=$(basename "$0" .sh)
-SCRIPT_DIR="$(dirname -- "${BASH_SOURCE[0]}")"
-cd "$SCRIPT_DIR"
-APP_BINARY_PATH="$SCRIPT_DIR/$APP_NAME"
+APP_NAME="$APP_NAME"
+SCRIPT_DIR="\$(dirname -- "\${BASH_SOURCE[0]}")"
+cd "\$SCRIPT_DIR"
+APP_BINARY_PATH="\$SCRIPT_DIR/\$APP_NAME"
 
-if [[ ! -x "$APP_BINARY_PATH" ]]; then
+if [[ ! -x "\$APP_BINARY_PATH" ]]; then
     printf 'Application binary not found or is not executable: %s\n' \
-        "$APP_BINARY_PATH" \
+        "\$APP_BINARY_PATH" \
         >&2
     exit 1
 fi
 
-exec "$APP_BINARY_PATH"
+exec "\$APP_BINARY_PATH"
 EOF
 
 printf 'Application built successfully.\n'
-printf 'Launcher in: %s\n' "${DIST_PATH}/start.sh"
+printf 'Launcher in: %s\n' "$LAUNCHER_PATH"

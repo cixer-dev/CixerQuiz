@@ -22,7 +22,7 @@ If you want to use this application without manually installing it or managing i
 
 2. Extract the ZIP file into an empty folder.
 
-3. In the extracted folder, locate the executable appropriate for your system. On Windows, the executable is a file named `CixerQuiz.exe`. On Linux, it is a Bash script named `launcher.sh`, which runs the `CixerQuiz` executable.
+3. In the extracted folder, locate the executable appropriate for your system. On Windows, the executable is a file named `CixerQuiz.exe`. On Linux, it is a Bash script named `start.sh`, which runs the `CixerQuiz` executable.
 
 4. Once you have located the executable, run it. If you encounter any startup problems, try running the executable as an administrator or reporting the issue in the project's GitHub repository.
 
