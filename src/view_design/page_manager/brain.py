@@ -27,7 +27,7 @@ class MainStack(QtW.QStackedWidget):
         self.addWidget(in_quiz)
         transition = SceneTransition(
             parent_stack=self,
-            duration=7000,
+            duration=5000,
             optional_msg=_("The quiz is loading. Please wait a moment...")
         )
         transition.sgn_timeout.connect(

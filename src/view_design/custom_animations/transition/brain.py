@@ -48,7 +48,7 @@ class SceneTransition(QtW.QWidget):
         self.rotation_animation = QtC.QVariantAnimation()
         self.rotation_animation.setDuration(self.duration)
         self.rotation_animation.setStartValue(0)
-        self.rotation_animation.setEndValue(360)
+        self.rotation_animation.setEndValue(180)
         self.rotation_animation.valueChanged.connect(
             self._on_rotation_changed
         )

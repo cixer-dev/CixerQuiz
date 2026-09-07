@@ -116,7 +116,7 @@ class InQuiz(QtW.QStackedWidget):
             self.actual_level += 1
             self.transition = SceneTransition(
                 parent_stack=self,
-                duration=5000,
+                duration=3000,
                 optional_msg=_(
                     "That answer is correct! Advancing to the next level..."
                 )
