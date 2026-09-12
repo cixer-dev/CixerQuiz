@@ -13,8 +13,7 @@ class APOnlyLabel(APTemplate):
 
         for answer_index, answer in enumerate(answers, start=1):
             formatted_answer = str_formatter.split_long_string(
-                    answer,
-                    35
+                    answer
                 )
             answer_btn = QtW.QPushButton(formatted_answer)
             answer_btn.pressed.connect(

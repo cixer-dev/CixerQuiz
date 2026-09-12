@@ -18,7 +18,7 @@ def title_to_snake_case(title: str) -> str:
 
 def split_long_string(
     original_string: str,
-    char_limit: int,
+    char_limit: int = 45,
     separator: str = "\n",
 ) -> str:
     """Split a string that exceeds the specified character limit.

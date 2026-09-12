@@ -32,7 +32,7 @@ class APWithVideos(APTemplate):
     def _build_answer_btns(self):
         answer_btns = []
         for answer_index, answer in enumerate(self.answers_to_video_path):
-            formatted_answer = str_formatter.split_long_string(answer, 25)
+            formatted_answer = str_formatter.split_long_string(answer, 30)
             answer_btn = QtW.QPushButton(formatted_answer)
             answer_btn.pressed.connect(
                 lambda a=answer: self._send_answer_outcome(a)
