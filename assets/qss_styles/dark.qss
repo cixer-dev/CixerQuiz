@@ -367,14 +367,17 @@ SmallHeader:read-only {
     border: none;
 }
 
-QPushButton#StaticBtn,
-QPushButton#StaticBtn:hover,
-QPushButton#StaticBtn:pressed,
-QPushButton#StaticBtn:checked,
-QPushButton#StaticBtn:disabled {
+#StaticBtn,
+#StaticBtn:checked,
+#StaticBtn:disabled {
     background: transparent;
     border: none;
     color: white;
     padding-left: 8px;
     text-align: center;
+}
+
+#StaticBtn:hover,
+#StaticBtn:focus {
+    border: 1px solid #8000FF;
 }

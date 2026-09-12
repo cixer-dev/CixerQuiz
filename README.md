@@ -4,7 +4,8 @@
 [![Python 3.14](https://img.shields.io/badge/Python-3.14-blue.svg)](https://www.python.org/)
 [![GitHub Release](https://img.shields.io/github/v/release/cixer-dev/CixerQuiz)](https://github.com/cixer-dev/CixerQuiz/releases)
 
-CixerQuiz is an educational application designed to give users maximum freedom to create, play, and share quizzes. Each quiz can contain an unlimited number of levels and supports up to nine different question-and-answer types. These level types offer a variety of resources, such as images and videos, to enhance the interactive experience. CixerQuiz allows users to share the quizzes they create within the app and customize the application's internal configuration and behavior.
+CixerQuiz is an educational application designed to give users maximum freedom to create, play, and share quizzes. Each quiz can contain an unlimited number of levels and supports up to nine different question-and-answer types. These level types offer a variety of resources, such as images and videos, to enhance the interactive experience. CixerQuiz allows users to share the quizzes they create within the app and customize the application's internal configuration and behavior. [Watch a CixerQuiz example quiz](https://github.com/user-attachments/assets/ac538b59-589a-4c4f-802f-f6be5f694608)
+
 
 ## Why This Project Is Useful
 
