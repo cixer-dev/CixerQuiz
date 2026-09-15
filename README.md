@@ -1,5 +1,3 @@
-# CixerQuiz
-
 [![License: GPL-3.0](https://img.shields.io/badge/License-GPL--3.0-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 [![Python 3.14](https://img.shields.io/badge/Python-3.14-blue.svg)](https://www.python.org/)
 [![GitHub Release](https://img.shields.io/github/v/release/cixer-dev/CixerQuiz)](https://github.com/cixer-dev/CixerQuiz/releases)
@@ -7,15 +5,15 @@
 CixerQuiz is an educational application designed to give users maximum freedom to create, play, and share quizzes. Each quiz can contain an unlimited number of levels and supports up to nine different question-and-answer types. These level types offer a variety of resources, such as images and videos, to enhance the interactive experience. CixerQuiz allows users to share the quizzes they create within the app and customize the application's internal configuration and behavior. [Watch a CixerQuiz example quiz](https://github.com/user-attachments/assets/ac538b59-589a-4c4f-802f-f6be5f694608)
 
 
-## Why This Project Is Useful
+# Why This Project Is Useful
 
 CixerQuiz is an app with virtually unlimited flexibility, making it suitable for a wide range of use cases. For example, if you are a cinephile, you could create quizzes about classic movies or television series in which the objective is to identify a film based on a video clip. If you are an educator or a student, you could create customized quizzes to prepare for a test and share them with your students or peers. Alternatively, you could create personalized quizzes to improve your ability to recall country flags, identify characteristics of historical figures, solve mathematical expressions, or apply the rules of chemical nomenclature.
 
 If you are an experienced user, professional programmer, or technology enthusiast, you can use this project as a reference implementation for software solutions that employ a similar technical stack. See [`docs/tech_stack.md`](docs/tech_stack.md) for more information.
 
-## How to Get This Project
+# How to Get This Project
 
-### Downloading the Release
+## Downloading the Release
 
 If you want to use this application without manually installing it or managing its dependencies, you can download the release ZIP archive for your system from the [`releases`](https://github.com/cixer-dev/CixerQuiz/releases) section. Follow these steps:
 
@@ -29,7 +27,7 @@ If you want to use this application without manually installing it or managing i
 
 > **Warning:** You can move the project folder to any location on your system. However, moving individual directories or files, such as the executable or the configuration directory, to another location may cause the app to stop working.
 
-### Building from Source
+## Building from Source
 
 If you want to build the project yourself, follow these steps:
 
@@ -59,11 +57,11 @@ pip install -r requirements.txt --no-deps
 
 > **Note:** For development purposes, it is strongly recommended that you install the project using Poetry to avoid compatibility issues.
 
-## Project Documentation
+# Project Documentation
 
 The project documentation is available in the [`docs/`](docs/) directory. It is recommended that you begin with [`docs/STRUCTURE.md`](docs/STRUCTURE.md), which explains the directory structure, and then continue with [`docs/quiz_structure.md`](docs/quiz_structure.md), which explains the internal structure and functionality of a quiz.
 
-## How to Contribute
+# How to Contribute
 
 Please refer to [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for a guide to the contribution standards and practices for this project.
 
