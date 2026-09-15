@@ -66,3 +66,6 @@ The project documentation is available in the [`docs/`](docs/) directory. It is 
 ## How to Contribute
 
 Please refer to [`docs/CONTRIBUTING.md`](docs/CONTRIBUTING.md) for a guide to the contribution standards and practices for this project.
+
+# Acknowledgments
+This project uses files such as icons and music obtained from the internet. You can find the attributions for these files here: [`CREDITS.md`](docs/CREDITS.md). I would like to thank all the artists who freely share their hard work online and are indirectly involved in this project.
