@@ -1,0 +1,1 @@
+No vulnerabilities have been detected in the project so far. The project operates entirely offline and, in its default state, interacts only with your archives located in its own directory. Keep in mind that information in the project’s main directory may be modified or deleted depending on your actions in the program.
