@@ -18,17 +18,22 @@ class QuizArea(QtW.QWidget):
     sgn_deletion_completed = QtC.Signal()
     sgn_pin_status_changed = QtC.Signal()
 
-    def __init__(self, quiz_filepath, quiz_info, parent_widget):
+    def __init__(
+        self,
+        quiz_dirpath: str,
+        quiz_info: str,
+        parent_widget: QtW.QWidget
+            ):
         super().__init__()
-        self.quiz_filepath = quiz_filepath
+        self.quiz_dirpath = quiz_dirpath
         self.quiz_info = quiz_info
         self.parent_widget = parent_widget
 
         self.quiz_grid = QtW.QGridLayout()
         self.quick_action_grid \
-            = QuickActionGrid(quiz_filepath, self.parent_widget)
+            = QuickActionGrid(self.quiz_dirpath, self.parent_widget)
         self.start_quiz_btn \
-            = StartQuizButton(quiz_filepath, self.parent_widget)
+            = StartQuizButton(self.quiz_dirpath, self.parent_widget)
         self.quiz_name_label = QuizNameLabel(quiz_info)
         self.quiz_description_plaintext \
             = QuizDescriptionPlainText(quiz_info)

@@ -79,7 +79,6 @@ class AssetsPathsPanel(QtW.QVBoxLayout):
             self.addWidget(asset_path_container)
 
     def _on_filepath_changed(self, title, new_filepath):
-        print(self, title, new_filepath)
         assets_paths_writer.set_asset_path_from_title(title, new_filepath)
         self.sgn_assets_config_changed.emit()
 

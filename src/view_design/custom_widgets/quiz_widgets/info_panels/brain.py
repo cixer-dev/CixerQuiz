@@ -12,12 +12,12 @@ class InfoPanel(QtW.QGridLayout):
 
     sgn_timeout = QtC.Signal()
 
-    def __init__(self, actual_level, duration):
+    def __init__(self, current_level, duration):
         super().__init__()
-        self.actual_level = actual_level
+        self.current_level = current_level
         self.duration = duration
 
-        self.level_label = LevelLabel(str(self.actual_level))
+        self.level_label = LevelLabel(str(self.current_level))
         self.level_label.setAlignment(QtC.Qt.AlignmentFlag.AlignCenter)
         self.timer_bar \
             = ProgressTimer(QtC.Qt.Orientation.Vertical, self.duration)

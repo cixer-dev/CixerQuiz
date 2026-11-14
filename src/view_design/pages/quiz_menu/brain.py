@@ -2,7 +2,7 @@ from PySide6 import QtCore as QtC
 
 from src.view_design.custom_widgets.scrollable_containers.vlayout import \
     QScrollAreaWithVLayout
-from src.model.root_dir_quiz_extractor.brain import RootDirQuizExtractor
+from src.model.quiz_extractor.brain import QuizExtractor
 from src.view_design.pages.quiz_menu.quiz_container.brain \
     import QuizArea
 from src.model.configurators.quiz_pinner_handler import QuizPinner
@@ -12,22 +12,22 @@ from src.view_design.page_design_toolkit import (
 
 class QuizMenu(QScrollAreaWithVLayout):
     """QScrollAreaWithVLayout that builds and contains all individual quiz
-    areas using the RootDir Quiz Extractor."""
+    areas using the  Quiz Extractor."""
 
     def __init__(self, parent_widget):
         super().__init__()
 
         self.parent_widget = parent_widget
-        self.root_dir_quiz_extractor = RootDirQuizExtractor()
-        self.quizzes_filepath_to_info \
-            = self.root_dir_quiz_extractor.get_quizzes_filepaths_to_info()
+        self.quiz_extractor = QuizExtractor()
+        self.quizzes_dirpath_to_info \
+            = self.quiz_extractor.get_quizzes_dirpath_to_info()
         self.quizzes_area = self._build_quiz_area_layout()
         expander.expand_layout(self.container_layout)
 
     def _build_quiz_area_layout(self):
         quizzes_area = []
-        for filepath, quiz_info in self.quizzes_filepath_to_info.items():
-            quiz_area = self._build_quiz_area(filepath, quiz_info)
+        for dirpath, quiz_info in self.quizzes_dirpath_to_info.items():
+            quiz_area = self._build_quiz_area(dirpath, quiz_info)
             self.container_layout.setAlignment(QtC.Qt.AlignmentFlag.AlignTop)
             self.container_layout.addWidget(
                 quiz_area,
@@ -36,29 +36,29 @@ class QuizMenu(QScrollAreaWithVLayout):
             quizzes_area.append(quiz_area)
         return quizzes_area
 
-    def _build_quiz_area(self, quiz_filepath, quiz_info):
+    def _build_quiz_area(self, quiz_dirpath, quiz_info):
         quiz_area \
-            = QuizArea(quiz_filepath, quiz_info, self.parent_widget)
+            = QuizArea(quiz_dirpath, quiz_info, self.parent_widget)
 
         quiz_area.sgn_deletion_completed.connect(
-            lambda path=quiz_filepath:
+            lambda path=quiz_dirpath:
                 self._on_deletion_completed(path)
         )
         quiz_area.sgn_pin_status_changed.connect(self._update_quiz_items)
         return quiz_area
 
-    def _on_deletion_completed(self, quiz_filepath):
-        quiz_pinner_handler = QuizPinner(quiz_filepath)
+    def _on_deletion_completed(self, quiz_dirpath):
+        quiz_pinner_handler = QuizPinner(quiz_dirpath)
         if quiz_pinner_handler.is_pinned:
             quiz_pinner_handler.unpin_quiz()
         self._update_quiz_items()
 
     def _update_quiz_items(self):
         cleaner.clear_layout(self.container_layout)
-        self.root_dir_quiz_extractor = RootDirQuizExtractor()
-        self.root_dir_quiz_extractor.get_valid_quizzes()
-        self.quizzes_filepath_to_info \
-            = self.root_dir_quiz_extractor.get_quizzes_filepaths_to_info()
+        self.quiz_extractor = QuizExtractor()
+        self.quiz_extractor.get_valid_quizzes()
+        self.quizzes_dirpath_to_info \
+            = self.quiz_extractor.get_quizzes_dirpath_to_info()
         self.quizzes_area = self._build_quiz_area_layout()
         expander.expand_layout(self.container_layout)
         self._update_quiz_items_size()

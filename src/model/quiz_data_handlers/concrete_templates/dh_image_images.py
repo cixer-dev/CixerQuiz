@@ -12,20 +12,21 @@ level."""
 
     def __init__(
         self,
-        level_path: str,
+        quiz_path: str,
+        level_data: dict[str, dict],
         quiz_duration: int
     ) -> None:
         super().__init__(
-            "IMAGE_IMAGES",
-            level_path,
+            level_data,
             quiz_duration
             )
+        self.quiz_path = quiz_path
 
         self.question_dh = QuestionsExtractorWithMedia(
-            self.level_path, self.random_index
+            self.quiz_path, self.possible_questions, self.random_index
         )
         self.answers_dh = AnswersWithMedia(
-            self.level_path, self.random_index
+            self.quiz_path, self.possible_answers, self.random_index
         )
         self.question = (
             self.question_dh.get_question_to_media_path()

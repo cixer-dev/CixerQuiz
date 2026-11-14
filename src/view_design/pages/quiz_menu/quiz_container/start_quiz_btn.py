@@ -5,10 +5,10 @@ from src.view_design.custom_widgets.push_buttons.\
 class StartQuizButton(StandardButtonWithIcon):
     """QPushButton that starts the in-game quiz when pressed."""
 
-    def __init__(self, quiz_filepath, parent_widget):
+    def __init__(self, quiz_dirpath, parent_widget):
         super().__init__(standard_icon_key="start_icon_path")
         self.parent_widget = parent_widget
         self.pressed.connect(
             lambda:
-                self.parent_widget.switch_to_in_quiz(quiz_filepath)
+                self.parent_widget.switch_to_in_quiz(quiz_dirpath)
             )

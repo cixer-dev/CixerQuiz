@@ -14,12 +14,12 @@ class PinOrUnpinButton(QtW.QPushButton):
 
     sgn_pin_status_changed = QtC.Signal()
 
-    def __init__(self, quiz_filepath, parent_widget):
+    def __init__(self, quiz_dirpath, parent_widget):
         super().__init__("")
-        self.quiz_filepath = quiz_filepath
+        self.quiz_dirpath = quiz_dirpath
         self.parent_widget = parent_widget
         self.setCheckable(True)
-        self.quiz_pinner_handler = QuizPinner(self.quiz_filepath)
+        self.quiz_pinner_handler = QuizPinner(self.quiz_dirpath)
         self.setChecked(self.quiz_pinner_handler.is_pinned)
         self.toggled.connect(self._on_button_toggled)
         self.icon_size_percent = 0.7

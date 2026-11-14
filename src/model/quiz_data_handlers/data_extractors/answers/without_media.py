@@ -9,8 +9,8 @@ class AnswersWithoutMedia(AnswerDataExtractor):
     Extract relevant data about answers without media from a generic \
         quiz level.
     """
-    def __init__(self, level_path: str, random_index: int) -> None:
-        super().__init__(level_path, random_index)
+    def __init__(self, answers: list[list[str]], random_index: int) -> None:
+        super().__init__(answers, random_index)
         self.correct_answer = self.answers[0]
         self.randomized_answers = self._get_randomized_answers()
 

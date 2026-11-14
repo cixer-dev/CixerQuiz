@@ -1,0 +1,320 @@
+{
+  "manifest": {
+    "is_valid_quiz": true,
+    "num_levels": 8,
+    "quiz_description": "A scientific quiz with 8 levels. It covers content in chemistry, physics, and mathematics.",
+    "quiz_duration": 60000,
+    "quiz_name": "Scientific Quiz"
+  },
+  "levels": [
+    {
+      "manifest": {
+        "level_type_id": "TEXT_TEXTS",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            "Unique and unambiguous designation that represents its properties",
+            "Arbitrary designation based on standards",
+            "Mathematical equation that represents physical properties"
+          ],
+          [
+            "Thermodynamic process in which reacting substances are converted into products",
+            "Electrochemical process where one substance is converted into another",
+            "Physical process where two elements combine without forming a new substance",
+            "Chemical process where energy is consumed"
+          ],
+          [
+            "Type of matter formed by atoms of the same category",
+            "Substance that cannot be decomposed by a chemical reaction",
+            "Substance that cannot be decomposed by a physical reaction"
+          ]
+        ],
+        "questions": [
+          "In Chemistry, the nomenclature of a substance is a...",
+          "In Chemistry, reaction is understood as a...",
+          "In Chemistry, chemical element is understood as a..."
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "TEXT_IMAGES",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            {
+              "Antoine Lavoisier": "assets/lavoisier.png"
+            },
+            {
+              "John Dalton": "assets/dalton.png"
+            },
+            {
+              "Amedeo Avogadro": "assets/avogadro.png"
+            }
+          ],
+          [
+            {
+              "Michael Faraday": "assets/faraday.png"
+            },
+            {
+              "Louis Pasteur": "assets/pasteur.png"
+            },
+            {
+              "Humphry Davy": "assets/davy.png"
+            }
+          ],
+          [
+            {
+              "Sir Isaac Newton": "assets/newton.jpg"
+            },
+            {
+              "Blaise Pascal": "assets/pascal.jpeg"
+            },
+            {
+              "Alfred Nobel": "assets/nobel.png"
+            }
+          ]
+        ],
+        "questions": [
+          "Which of the following scientists is known as the \"father of chemistry\"?",
+          "Which of the following scientists discovered the phenomenon of electromagnetic induction?",
+          "Which of the following physicists discovered the Laws of Motion?"
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "TEXT_TEXTS",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            "v = (X+X0)/t",
+            "v = X*t",
+            "v = a*t"
+          ],
+          [
+            "It equals the sum of the square of the legs",
+            "It equals the sum of the legs",
+            "It equals the sum of the legs squared"
+          ],
+          [
+            "Inversely proportional",
+            "Directly proportional",
+            "Irrelevant"
+          ]
+        ],
+        "questions": [
+          "How is the average velocity of an object determined in Newtonian Mechanics if its initial position (X0) and final position (X) are known in a specific time interval (t)?",
+          "According to the Pythagorean Theorem, the square of the hypotenuse...",
+          "In Newtonian Mechanics, the mass of an object with respect to its acceleration is..."
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "IMAGE_TEXTS",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            "Rene Descartes",
+            "Georg Wilhelm Friedrich Hegel",
+            "Oscar Fingal O'Fflahertie Wills Wilde"
+          ],
+          [
+            "The Prince of Mathematics",
+            "The prodigy of mathematics",
+            "The King of Mathematics"
+          ],
+          [
+            "A quadratic function",
+            "A linear function",
+            "A cubic function"
+          ]
+        ],
+        "questions": [
+          {
+            "Who does this portrait represent?": "assets/Descartes.jpg"
+          },
+          {
+            "What is the nickname of this personality?": "assets/Gauss.jpg"
+          },
+          {
+            "The graph represents...": "assets/cuadratic.webp"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "VIDEO_TEXTS",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            "The action of the magnetic field on iron filings",
+            "The action of the electric field on iron filings",
+            "The mutual influence of the electric and magnetic fields"
+          ],
+          [
+            "Calculation of the area of the circle by exhaustion of polygons",
+            "Demonstration of the value of the integral of a circle",
+            "Archimedean Method"
+          ],
+          [
+            "Principle of Archimedes",
+            "Principle of Anaxagoras",
+            "Principle of conservation of energy"
+          ]
+        ],
+        "questions": [
+          {
+            "What does this experiment demonstrate?": "assets/experiment.mp4"
+          },
+          {
+            "What is the name of the mathematical procedure represented?": "assets/pi.gif"
+          },
+          {
+            "What physical principle is represented?": "assets/principle_of_archimedes.mp4"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "IMAGE_IMAGES",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            {
+              "Rene Descartes": "assets/Descartes.jpg"
+            },
+            {
+              "Trence Tao": "assets/Trence Tao.jpg"
+            },
+            {
+              "Srinivasa Ramanujan": "assets/Ramanujan.jpg"
+            }
+          ],
+          [
+            {
+              "Isaac Newton": "assets/newton.jpg"
+            },
+            {
+              "Galileo Galilei": "assets/galileo.jpg"
+            },
+            {
+              "Gottfried Wilhelm Leibniz": "assets/Lebniz.jpeg"
+            }
+          ],
+          [
+            {
+              "Stephen Wiliam Hawking": "assets/hawking.jpg"
+            },
+            {
+              "Richard Dawkings": "assets/Dawkings.jpg"
+            },
+            {
+              "Trence Tao": "assets/Trence Tao.jpg"
+            }
+          ]
+        ],
+        "questions": [
+          {
+            "Who is the author of this treatise?": "assets/methode.jpg"
+          },
+          {
+            "Who is the author of this treatise?": "assets/principia.png"
+          },
+          {
+            "Who is the author of this book?": "assets/brief.jpg"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "VIDEO_TEXTS",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            "The derivative of a function at a point",
+            "The integral of a function",
+            "The limit of a function at a point"
+          ],
+          [
+            "The integral of a function",
+            "The derivative of a function",
+            "The limit of a function at a point"
+          ],
+          [
+            "The limit of a function at a point",
+            "The derivative of a function at a point",
+            "The integral of a function"
+          ]
+        ],
+        "questions": [
+          {
+            "This animation represents...": "assets/deriv.mp4"
+          },
+          {
+            "This animation represents...": "assets/integral.gif"
+          },
+          {
+            "This animation represents...": "assets/limit.mp4"
+          }
+        ]
+      }
+    },
+    {
+      "manifest": {
+        "level_type_id": "IMAGE_TEXTS",
+        "num_questions": 3
+      },
+      "text_content": {
+        "answers": [
+          [
+            "Einstein's Theory of Relativity",
+            "Theory of Universal Gravitation",
+            "M-Theory",
+            "Theory of Electromagnetism"
+          ],
+          [
+            "x = -5",
+            "x = -5 and x = 5",
+            "x = 0 and x = 10",
+            "x = -10 and x = 10"
+          ],
+          [
+            "I only know that I know nothing",
+            "I think, therefore I am",
+            "Plato is my friend, but truth is my greater friend"
+          ]
+        ],
+        "questions": [
+          {
+            "What physical theory is the concept of the 'Light Cone' related to?": "assets/light_cone.jpg"
+          },
+          {
+            "What value or values satisfy this equation?": "assets/ecuation.jpg"
+          },
+          {
+            "What phrase is this Greek sage known for?": "assets/Socrates_Louvre.jpg"
+          }
+        ]
+      }
+    }
+  ]
+}

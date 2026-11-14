@@ -1,18 +1,18 @@
 # Introduction
 
-A quiz is a data unit that contains all the information required by the program to visually present the levels, questions, and answers to the user. It is implemented as a directory with different files and subdirectories that perform specific functions in the quiz-display process.
+A quiz is a data unit that contains all the information required by the program to visually present its levels, questions, and answers. It is implemented as a directory containing an `assets` folder, which holds the media files needed for the quiz, and a `data.json` file, which performs specific functions in the quiz display process.
 
-The structure of a quiz will be addressed by analyzing the composition of the directory. That is, each expected directory or file in a quiz will be listed, explaining its function, structure, and examples of its content. The analysis will begin with the upper units, those closest to the quiz's root directory.
+The structure of a quiz is described by analyzing the contents of the `data.json` file and its sections. This documentation lists each expected component of a quiz and explains its function, structure, and example content. The analysis begins with the higher-level components and proceeds to the less complex ones.
 
-For the examples, the information included is the content of the default quiz included in the program. It is recommended that the reader follow this document in a logical order, as concepts defined or explained in the initial sections will not be unnecessarily restated in later sections to reduce repetition.
+The examples are based on the default quiz included with the program. To see a complete and functional example of a quiz’s internal structure, inspect `user_data/quizzes/Scientific Quiz`. Readers are encouraged to follow this document in order, since concepts introduced in earlier sections are not repeated unnecessarily in later sections.
 
-# Quiz
+# `data.json`
 
-The internal structure of a quiz consists of a `manifest.json` file and a series of directories working as levels.
+The internal structure of a JSON data file consists of a dictionary. This dictionary contains two keys: `manifest` and `levels`. Each key stores specific, related information.
 
-## manifest.json
+## `manifest`
 
-The `manifest.json` file of the quiz serves to store information necessary for the quiz display.
+The quiz’s `manifest` key stores information required for the general display of the quiz. It contains data used for operations that apply to the quiz as a whole, rather than to an individual level.
 
 The following is an example of the possible content of this file:
 
@@ -34,9 +34,9 @@ The `num_levels` value is a positive integer that indicates how many levels the 
 
 `quiz_duration` is a positive number indicating how many milliseconds players have to answer a question. If the user exceeds the established time, the program will handle it as a defeat by timeout.
 
-# Level
+# Levels
 
-A level is a compact data unit represented in the file system by a directory. Its name is always a natural number greater than zero that corresponds to the order of appearance of that level in the quiz.
+The `levels` section is represented as a list containing levels in a specific order. The first level is at index $0$, the second is at index $1$, and the $n$th level is at index $n - 1$.
 
 In total, the project supports 9 level types. Each possesses a code formed by a character string that identifies it internally in the program's logic. The current codes for levels are:
 
@@ -66,11 +66,11 @@ All question and answer types, regardless of their codes, include text. When the
 
 Currently, the project supports two types of multimedia files: images or videos. The list of accepted formats for these file types is found in the [`config/accepted_formats.json`](config/accepted_formats.json) JSON. The limitation to certain formats arises from the limited support that exists for the widgets used in the level display performed by the PySide6 library.
 
-Functionally, level types differ by the content within two JSON files in the level directory: `manifest.json` and `text_content.json`, in addition to the `assets` subdirectory, which is added if the level contains multimedia files attached to questions or answers.
+Functionally, level types differ according to the contents of their two keys: `manifest` and `text_content`.
 
-## manifest.json Structure
+## Level `manifest` Key Structure
 
-The `manifest.json` contains a dictionary with two entries: `level_type_id` and `num_questions`.
+The `manifest` key contains a dictionary with two entries: `level_type_id` and `num_questions`.
 
 The value of the `level_type_id` entry is a text string that represents an identifier associated with the level type.
 
@@ -85,11 +85,11 @@ The following shows an example of `manifest.json` content:
 }
 ```
 
-## text_content.json Structure
+## Level `text_content` Key Structure
 
-The `text_content.json` contains a general dictionary with two entries: `questions` and `answers`.
+The `text_content` key contains a dictionary with two entries: `questions` and `answers`.
 
-The following is an example of text_content.json in a level:
+The following is an example of a level’s `text_content`:
 
 ```json
 {
@@ -119,14 +119,14 @@ The following is an example of text_content.json in a level:
 }
 ```
 
-In the `text_content.json` of each level, there may be multiple questions with their respective answers. That is, in a single level, there can exist n possible questions and n lists of possible answers to these questions, respectively. For simplicity, a question and its possible answers will be referred to generally as a question-answers pair.
+In each level’s `text_content` key, there may be multiple questions, each with its corresponding answers. That is, a single level can contain $n$ questions and $n$ corresponding lists of possible answers. For simplicity, a question and its possible answers are referred to as a question-and-answer pair.
 
 Although a single level can have multiple question-answers pairs, when the quiz is played by the user, a single pair is selected randomly. This is achieved because in the question-answers pairs, the indices in their respective lists are identical.
 
 If a question-answers pair were to be displayed to the user, the following process would be followed:
 
-1. The program accesses the `manifest.json` of the level
-2. Extracts from `manifest.json` the value of the `num_questions` key
+1. The program accesses the quiz’s `data.json` file.
+2. It retrieves the value of the `num_questions` key from the level’s `manifest` in `levels` key.
 3. Generates a random positive number between 1 and the value of `num_questions`
 4. Accesses the value of the `"questions"` and `"answers"` keys with the index of the randomly generated number
 
@@ -280,12 +280,12 @@ Answers with media are represented as a list of lists of dictionaries. These dic
 }
 ```
 
-## Assets
+# Assets
 
-The `assets` directory serves as the repository for files attached to questions and answers with media within each level. Within it, there is no hierarchy for the files.
+The `assets` directory serves as a repository for media files attached to questions and answers throughout the quiz. The files are stored without a directory hierarchy: if a file is needed by `data.json`, it is stored directly in `assets`. If two levels require the same file, it is exported to the `assets` directory only once and used independently by both levels.
 
 The implementation of this directory is necessary to allow the use of paths relative to the quiz and not to a specific machine and directory. Thus, quizzes can be exchanged from one computer to another via the internet, or moved from one directory to another according to user needs.
 
 In quiz creation, local storage files initially included by the user through the graphical interface are used. In the final construction of the quiz directory, the program creates a copy of the local files referenced by the user for questions or answers in the `assets` directory. Then, it takes the original path of the file referenced by the user and extracts the filename and extension from it. Subsequently, the program concatenates the path `assets/` with the filename and extension, so that the final path in the quiz acquires the form: `assets/filename.extension`
 
-When displaying files in the question or answer, the program concatenates the absolute path of the level with the path formatted by the program to obtain the absolute path of the file and display it. In this manner, if the quiz changes directory, the program will have no difficulty recreating the absolute path of each multimedia file at runtime.
+When displaying a file attached to a question or answer, the program combines the absolute path to the quiz directory on the user’s computer with the path stored in `data.json`. This creates the file’s absolute path, allowing the program to display it. Therefore, if the user manually changes the default quiz storage directory, the program can still recreate the absolute path to each multimedia file at runtime.

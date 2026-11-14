@@ -7,8 +7,8 @@ from src.model.configurators.standard_paths_configurator import \
 class QuizPinner:
     """Manage pinned quiz entries stored in pinned quizzes JSON."""
 
-    def __init__(self, quiz_filepath: str) -> None:
-        self.quiz_filepath = quiz_filepath
+    def __init__(self, quiz_dirpath: str) -> None:
+        self.quiz_dirpath = quiz_dirpath
         self.pinned_quizzes_list_path = (
             standard_path_reader.read_standard_path(
                 "pinned_quizzes_list"
@@ -18,7 +18,7 @@ class QuizPinner:
             self.pinned_quizzes_list_path
         )
         self.is_pinned = (
-            self.quiz_filepath in self.pinned_quizzes_list
+            self.quiz_dirpath in self.pinned_quizzes_list
         )
 
     def toggle_pin_status(self) -> None:
@@ -32,9 +32,9 @@ class QuizPinner:
 
     def pin_quiz(self) -> None:
         """Add the quiz entry to the pinned list."""
-        new_pinned_quizzes_list = [self.quiz_filepath]
+        new_pinned_quizzes_list = [self.quiz_dirpath]
         for pinned_quiz_path in self.pinned_quizzes_list:
-            if pinned_quiz_path != self.quiz_filepath:
+            if pinned_quiz_path != self.quiz_dirpath:
                 new_pinned_quizzes_list.append(pinned_quiz_path)
         writer.write_json(
             self.pinned_quizzes_list_path,
@@ -45,7 +45,7 @@ class QuizPinner:
         """Remove the quiz entry from the pinned list."""
         new_pinned_quizzes_list = []
         for pinned_quiz_path in self.pinned_quizzes_list:
-            if pinned_quiz_path != self.quiz_filepath:
+            if pinned_quiz_path != self.quiz_dirpath:
                 new_pinned_quizzes_list.append(pinned_quiz_path)
         writer.write_json(
             self.pinned_quizzes_list_path,

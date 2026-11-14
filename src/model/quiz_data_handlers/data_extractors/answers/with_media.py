@@ -10,9 +10,15 @@ class AnswersWithMedia(AnswerDataExtractor):
     """Extract relevant data about answers with media from a generic \
         quiz level."""
 
-    def __init__(self, level_path: str, random_index: int) -> None:
+    def __init__(
+        self,
+        quiz_path: str,
+        answers: list[list[dict[str, str]]],
+        random_index: int
+            ) -> None:
         """Initialize derived answer/media mappings for this quiz level."""
-        super().__init__(level_path, random_index)
+        super().__init__(answers, random_index)
+        self.quiz_path = quiz_path
         self.correct_answer = next(iter(self.answers[0]))
         self.formatted_answers = self._get_formatted_answers_to_media_path()
         self.randomized_answers_to_media_path = (
@@ -26,7 +32,7 @@ class AnswersWithMedia(AnswerDataExtractor):
             for answer, media_path_unformatted \
                     in answer_to_media_path.items():  # type: ignore
                 media_path = os.path.join(
-                    self.level_path,
+                    self.quiz_path,
                     media_path_unformatted,
                 )
                 answers_to_media_path[answer] = media_path

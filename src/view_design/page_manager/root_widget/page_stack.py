@@ -27,6 +27,9 @@ class PageStack(QtW.QStackedWidget):
         self.switch_to_quiz_menu()
 
     def switch_to_quiz_menu(self):
+        self.quiz_menu.deleteLater()
+        self.quiz_menu = QuizMenu(self.main_stack)
+        self.addWidget(self.quiz_menu)
         self.setCurrentWidget(self.quiz_menu)
         self.sgn_change_to_quiz_menu.emit()
 

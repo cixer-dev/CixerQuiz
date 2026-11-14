@@ -13,9 +13,9 @@ class DeleteButton(StandardButtonWithIcon):
     using the QuizRemover module."""
     sgn_deletion_completed = QtC.Signal()
 
-    def __init__(self, quiz_filepath, parent_widget):
+    def __init__(self, quiz_dirpath, parent_widget):
         super().__init__(standard_icon_key="delete_icon_path")
-        self.quiz_filepath = quiz_filepath
+        self.quiz_dirpath = quiz_dirpath
         self.parent_widget = parent_widget
         self.pressed.connect(self.show_confirmation_dialog)
 
@@ -31,7 +31,7 @@ class DeleteButton(StandardButtonWithIcon):
 
     def _on_delete_quiz(self):
         try:
-            quiz_remover.delete_quiz(self.quiz_filepath)
+            quiz_remover.delete_quiz(self.quiz_dirpath)
             self.sgn_deletion_completed.emit()
         except Exception as e:
             raise e

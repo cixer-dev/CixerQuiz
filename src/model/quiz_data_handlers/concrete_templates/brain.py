@@ -1,8 +1,5 @@
 from typing import Any
-import os
 import random
-
-from src.model.json_wrapper import reader
 
 
 class DataHandlerTemplate:
@@ -10,21 +7,19 @@ class DataHandlerTemplate:
 
     def __init__(
         self,
-        level_type_id: str,
-        level_path: str,
+        level_data: dict[str, dict],
         duration: int
     ) -> None:
-        self.LEVEL_TYPE_ID = level_type_id
-        self.level_path = level_path
+        self.level_manifest = level_data["manifest"]
+        self.level_text_content = level_data["text_content"]
+        self.possible_questions = self.level_text_content["questions"]
+        self.possible_answers = self.level_text_content["answers"]
+        self.LEVEL_TYPE_ID = self.level_manifest["level_type_id"]
         self.duration = duration
         self.question = None
         self.answers = None
         self.correct_answer = None
-
-        self.manifest_path = os.path.join(self.level_path, "manifest.json")
-        self.num_questions = reader.read_json_key(
-            self.manifest_path, "num_questions"
-        )
+        self.num_questions = self.level_manifest["num_questions"]
         self.random_index = random.randrange(self.num_questions)
 
     def _set_question(self, question: str | dict[str, str]):

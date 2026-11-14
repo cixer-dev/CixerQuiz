@@ -28,13 +28,13 @@ class QuizLevelTemplate(QtW.QWidget):
         self.data = data_for_display
         self.correct_answer = self.data["correct_answer"]
         self.duration = self.data["quiz_duration"]
-        self.actual_level = self.data["actual_level"]
+        self.current_level = self.data["current_level"]
 
         self.container_layout = QtW.QGridLayout()
         self.question_panel = None
         self.answer_panel = None
         self.interactive_panel = None
-        self.info_panel = InfoPanel(self.actual_level, self.duration)
+        self.info_panel = InfoPanel(self.current_level, self.duration)
         self.info_panel.sgn_timeout.connect(self._on_timeout)
         self.setLayout(self.container_layout)
 

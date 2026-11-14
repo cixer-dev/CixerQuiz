@@ -35,7 +35,7 @@ class InQuiz(QtW.QStackedWidget):
     def __init__(self, main_stack, quiz_path):
         super().__init__()
         self.main_stack = main_stack
-        self.quiz_path = quiz_path
+        self.quiz_dirpath = quiz_path
         self.LEVEL_TYPE_ID_TO_PANEL_CLASS = {
             "TEXT_TEXTS": QuizLevelsTextTexts,
             "TEXT_IMAGES": QuizLevelTextImages,
@@ -51,14 +51,14 @@ class InQuiz(QtW.QStackedWidget):
         self.dh_levels = self.quiz_data_handler.get_dh_levels()
         self._append_levels_to_quiz()
         self.num_levels = len(self.dh_levels)
-        self.actual_level = 0
+        self.current_level = 0
         self.setCurrentIndex(0)
 
     def _append_levels_to_quiz(self):
         for dh_level in self.dh_levels:
             data_for_display = dh_level.get_data_for_display()
             if data_for_display:
-                data_for_display["actual_level"] \
+                data_for_display["current_level"] \
                     = self.dh_levels.index(dh_level) + 1
             level_type_id = dh_level.LEVEL_TYPE_ID
             page = self._build_page(level_type_id, data_for_display)
@@ -100,20 +100,20 @@ class InQuiz(QtW.QStackedWidget):
                 )
 
     def _switch_to_game_over_for_incorrect_answer(self, data_for_display):
-        data_for_display["quiz_path"] = self.quiz_path
+        data_for_display["quiz_path"] = self.quiz_dirpath
         game_over_for_incorrect_answer \
             = GOIncorrectAnswer(self.main_stack, data_for_display)
         self.addWidget(game_over_for_incorrect_answer)
         self.setCurrentWidget(game_over_for_incorrect_answer)
 
     def _switch_to_game_over_for_timeout(self):
-        game_over_for_timeout = GOTimeout(self.main_stack, self.quiz_path)
+        game_over_for_timeout = GOTimeout(self.main_stack, self.quiz_dirpath)
         self.addWidget(game_over_for_timeout)
         self.setCurrentWidget(game_over_for_timeout)
 
     def _on_level_up(self):
-        if self.actual_level != self.num_levels - 1:
-            self.actual_level += 1
+        if self.current_level != self.num_levels - 1:
+            self.current_level += 1
             self.transition = SceneTransition(
                 parent_stack=self,
                 duration=3000,
@@ -123,7 +123,7 @@ class InQuiz(QtW.QStackedWidget):
             )
             self.transition.sgn_timeout.connect(
                 lambda:
-                    self.setCurrentIndex(self.actual_level)
+                    self.setCurrentIndex(self.current_level)
                 )
         else:
             self._switch_to_victory_screen()

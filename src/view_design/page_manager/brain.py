@@ -22,8 +22,8 @@ class MainStack(QtW.QStackedWidget):
 
         self.show()
 
-    def switch_to_in_quiz(self, quiz_filepath):
-        in_quiz = InQuiz(self, quiz_filepath)
+    def switch_to_in_quiz(self, quiz_dirpath):
+        in_quiz = InQuiz(self, quiz_dirpath)
         self.addWidget(in_quiz)
         transition = SceneTransition(
             parent_stack=self,
